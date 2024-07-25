@@ -1,0 +1,23 @@
+-- The A-Train Dialogue (Aka The Boys)
+-- 😎💨🟦 = ???
+
+local lyrics = {
+    "I",
+    "Can't",
+    "Stop",
+    "I Can't",
+    "Stop",
+    "I CAN'T STOP",
+    "I CAN'T STOP",
+}
+
+-- Chat function
+local function singLyrics()
+    for _, lyric in ipairs(lyrics) do
+        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(lyric, "All")
+        wait(1.5) -- Adjust the delay as desired
+    end
+end
+
+-- Start singing
+singLyrics()
