@@ -1,9 +1,22 @@
+-- Create the Tool instance
+local tool = Instance.new("Tool")
+
+-- Set the tool's properties
+tool.Name = "Bullet Adoration"
+tool.RequiresHandle = false  -- Set to true if you have a handle part
+tool.CanBeDropped = false     -- Change as needed
+
+-- Add a description or other properties
+tool.ToolTip = "I Can't Stop"
+
+-- Function to make stuff happen when activated
+local function activateTool()
 function isNumber(str)
   if tonumber(str) ~= nil or str == 'inf' then
     return true
   end
 end
-local tspeed = 3
+local tspeed = 1.77
 local hb = game:GetService("RunService").Heartbeat
 local tpwalking = true
 local player = game:GetService("Players")
@@ -19,3 +32,11 @@ while tpwalking and hb:Wait() and chr and hum and hum.Parent do
     end
   end
 end
+end
+-- Add functionality to the tool when activated
+tool.Equipped:Connect(function()
+    activateTool()
+end)
+
+-- Add the tool to the player's backpack
+tool.Parent = game.Players.LocalPlayer.Backpack
