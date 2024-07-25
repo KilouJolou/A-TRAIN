@@ -1,0 +1,67 @@
+-- Create the Tool instance
+local tool = Instance.new("Tool")
+
+-- Set the tool's properties
+tool.Name = "Bullet Speed"
+tool.RequiresHandle = false  -- Set to true if you have a handle part
+tool.CanBeDropped = false     -- Change as needed
+
+-- Add a description or other properties
+tool.ToolTip = "I Can't Stop"
+
+-- Function to make stuff happen when activated
+local function activateTool()
+game.Workspace.CurrentCamera.FieldOfView = 550
+
+local player = game.Players.LocalPlayer
+repeat wait() until player.Character.Humanoid
+local humanoid = player.Character.Humanoid
+local character = player.Character or player.CharacterAdded:Wait()
+local UserInputService = game:GetService("UserInputService")
+
+local anim = Instance.new("Animation")
+anim.AnimationId = "rbxassetid://13643152947"
+
+local playAnim = humanoid:LoadAnimation(anim)
+playAnim:Play()
+wait(0.40)
+
+local now = Instance.new("Sound")
+now.Name = "Messages"
+now.SoundId = "rbxassetid://13643229985"
+now.Parent = game.Players.LocalPlayer.Character.Torso
+now:Play()
+now.Volume = 1
+wait(0)
+
+local cantstop = Instance.new("Sound")
+cantstop.Name = "From The"
+cantstop.SoundId = "rbxassetid://13634797951"
+cantstop.Parent = game.Players.LocalPlayer.Character.Torso
+cantstop:Play()
+cantstop.Volume = 1.5
+wait(2.67)
+
+local anim2 = Instance.new("Animation")
+anim2.AnimationId = "rbxassetid://13634395775"
+
+local playAnim2 = humanoid:LoadAnimation(anim2)
+playAnim2:Play()
+wait(0)
+
+local atrain = Instance.new("Sound")
+atrain.Name = "Stars"
+atrain.SoundId = "rbxassetid://13634797951"
+atrain.Looped = "true"
+atrain.Parent = game.Players.LocalPlayer.Character.Torso
+atrain:Play()
+atrain.Volume = 2.5
+wait(0)
+end
+-- Add functionality to the tool when activated
+tool.Equipped:Connect(function()
+    activateTool()
+end)
+
+-- Add the tool to the player's backpack
+tool.Parent = game.Players.LocalPlayer.Backpack
